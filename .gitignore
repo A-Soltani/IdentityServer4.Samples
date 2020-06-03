@@ -5,3 +5,8 @@
 /IdentityManaging/.vs/IdentityManaging/v16
 /IdentityManaging/IdentityManaging.IdentityServer.API/obj
 /IdentityManaging/IdentityManaging.IdentityServer.API/bin/Debug/netcoreapp3.1
+/IdentityManaging/.vs/IdentityManaging/config
+/IdentityManaging/IdentityManaging.IdentityServer.Domain/bin/Debug/netcoreapp3.1
+/IdentityManaging/IdentityManaging.IdentityServer.Domain/obj
+/IdentityManaging/IdentityManaging.IdentityServer.Infrastructure/bin/Debug/netcoreapp3.1
+/IdentityManaging/IdentityManaging.IdentityServer.Infrastructure/obj

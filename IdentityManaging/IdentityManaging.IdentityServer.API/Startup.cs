@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityManaging.IdentityServer.API.Configuration;
+using IdentityManaging.IdentityServer.API.Configuration.UserConfig;
+using IdentityManaging.IdentityServer.API.CustomExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +27,23 @@ namespace IdentityManaging.IdentityServer.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddInfrastructureClasses()
+            //    .AddCustomUserStore()
+            //    .AddControllers();
+
             services.AddControllers();
+
+            services.AddIdentityServer(options =>
+            {
+                options.Events.RaiseSuccessEvents = true;
+                options.Events.RaiseFailureEvents = true;
+                options.Events.RaiseErrorEvents = true;
+            })
+              
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryClients(Config.GetClients())
+                .AddCustomUserStore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,12 +56,15 @@ namespace IdentityManaging.IdentityServer.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
+
+            app.UseIdentityServer();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
