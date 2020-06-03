@@ -3,3 +3,5 @@
 ################################################################################
 
 /IdentityManaging/.vs/IdentityManaging/v16
+/IdentityManaging/IdentityManaging.IdentityServer.API/obj
+/IdentityManaging/IdentityManaging.IdentityServer.API/bin/Debug/netcoreapp3.1
