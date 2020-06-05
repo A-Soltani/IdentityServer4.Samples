@@ -14,7 +14,7 @@ namespace IdentityManaging.IdentityServer.Infrastructure.IdentityServer4Configur
             new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                //new IdentityResources.Profile(),
+                new IdentityResources.Profile(),
                 new IdentityResource
                 {
                     Name = "rc.scope",
@@ -55,7 +55,7 @@ namespace IdentityManaging.IdentityServer.Infrastructure.IdentityServer4Configur
                         "ApiOne",
                         "ApiTwo",
                         IdentityServerConstants.StandardScopes.OpenId,
-                        //IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Profile,
                         "rc.scope",
                     },
 

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using IdentityManaging.IdentityServer.Infrastructure.IdentityServer4Configuration;
+using IdentityManaging.IdentityServer.API.CustomExtensions;
 
 namespace IdentityManaging.IdentityServer
 {
@@ -24,15 +25,16 @@ namespace IdentityManaging.IdentityServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            
+            services.AddCustomDbContext(Configuration) // Identity server DB context
+                .AddCustomAspIdentity() // AddIdentity registers the services. It must be added before AddCustomIdentityServer
+                .AddCustomIdentityServer() // Config identity server
+                ;
 
-            // IdentityServer
-            services.AddIdentityServer()
-               .AddAspNetIdentity<IdentityUser>()
-               .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryClients(Config.GetClients())
-                .AddDeveloperSigningCredential();
+
+
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +51,9 @@ namespace IdentityManaging.IdentityServer
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // identity server
+            app.UseIdentityServer();
 
             app.UseAuthorization();
 
