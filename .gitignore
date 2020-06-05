@@ -10,3 +10,6 @@
 /IdentityManaging/IdentityManaging.IdentityServer.Domain/obj
 /IdentityManaging/IdentityManaging.IdentityServer.Infrastructure/bin/Debug/netcoreapp3.1
 /IdentityManaging/IdentityManaging.IdentityServer.Infrastructure/obj
+/IdentityManaging/IdentityManaging.IdentityServer/bin/Debug/netcoreapp3.1
+/IdentityManaging/IdentityManaging.IdentityServer/obj/Debug/netcoreapp3.1
+/IdentityManaging/IdentityManaging.IdentityServer/obj
