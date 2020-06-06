@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace IdentityManaging.IdentityServer.ViewModels
+namespace IdentityManaging.Infrastructure.Repositories.DTOs.UserManagmentRepository
 {
-    public class RegisterViewModel
+    public class UserRegistrationDto
     {
         [Required]
         public string Username { get; set; }
